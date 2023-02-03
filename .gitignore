@@ -88,3 +88,7 @@ project/*.bin
 /SI/*
 *.si4project/
 
+# Sublime workspaces may contain sensitive information and should never be committed,
+# unlike Sublime projects.
+# See https://sublime-text-unofficial-documentation.readthedocs.io/en/latest/file_management/projects.html#workspaces
+*.sublime-workspace
