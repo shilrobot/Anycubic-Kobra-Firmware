@@ -34,7 +34,7 @@
 #include "../../ui_api.h"
 
 #define DEVICE_NAME             "Anycubic Kobra"
-#define FIRMWARE_VER            "Kobra V2.8.2 [shilrobot custom]"
+#define FIRMWARE_VER            "Kobra V2.8.2 shilbert ed."
 #define BUILD_VOLUME            "220*220*210 (mm)"
 #define TECH_SUPPORT            "https://www.anycubic.com"
 
