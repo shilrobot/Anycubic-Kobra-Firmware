@@ -489,7 +489,13 @@
 // Above this temperature the heater will be switched off.
 // This can protect components from overheating, but NOT from shorts and failures.
 // (Use MINTEMP for thermistor short/failure protection.)
-#define HEATER_0_MAXTEMP 275
+
+// Hotend max temp raised from 275 to 285 C per
+// https://e3d-online.zendesk.com/hc/en-us/articles/360015774817-Titan-Aero-Marlin-Guide-Edition-1-
+// If we want to hot-tighten at a higher temp, this can be raised to 300 for short periods of time.
+// Apparently the limiting factor is the thermistor which cannot take over 285 C indefinitely.
+#define HEATER_0_MAXTEMP 285 
+
 #define HEATER_1_MAXTEMP 275
 #define HEATER_2_MAXTEMP 275
 #define HEATER_3_MAXTEMP 275
@@ -523,9 +529,9 @@
     #define DEFAULT_Ki_LIST {   1.08,   1.08 }
     #define DEFAULT_Kd_LIST { 114.00, 114.00 }
   #else
-    #define DEFAULT_Kp  22.20
-    #define DEFAULT_Ki   1.08
-    #define DEFAULT_Kd 119.00
+    #define DEFAULT_Kp  27.68
+    #define DEFAULT_Ki   2.28
+    #define DEFAULT_Kd  83.87
   #endif
 #endif // PIDTEMP
 
@@ -767,7 +773,7 @@
  * Override with M92
  *                                      X, Y, Z, E0 [, E1[, E2...]]
  */
-#define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 800, 390 }
+#define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 800, 401 }
 
 /**
  * Default Max Feed Rate (mm/s)
@@ -816,8 +822,8 @@
  */
 #define CLASSIC_JERK
 #if ENABLED(CLASSIC_JERK)
-  #define DEFAULT_XJERK  5
-  #define DEFAULT_YJERK  5
+  #define DEFAULT_XJERK  10
+  #define DEFAULT_YJERK  10
   #define DEFAULT_ZJERK  0.3
 
   //#define TRAVEL_EXTRA_XYJERK 0.0     // Additional jerk allowance for all travel moves
@@ -1202,7 +1208,7 @@
 #define Z_MIN_POS 0
 #define X_MAX_POS (X_BED_SIZE + 4)
 #define Y_MAX_POS (Y_BED_SIZE + 2)
-#define Z_MAX_POS 250
+#define Z_MAX_POS 210
 
 /**
  * Software Endstops
