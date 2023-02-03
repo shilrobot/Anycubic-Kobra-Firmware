@@ -34,8 +34,10 @@ The TL;DR toolchain is:
 * Keil MDK v5.36, available from Keil
 * ARM::CMSIS 5.7.0 pack (**UNINSTALL** 5.8.0), installed via the Keil pack manager
 * `HDSC.HC32F460.1.0.7.pack` from the chip manufacturer, XHSC.
-	* Go to http://www.xhsc.com.cn/Productlist/info.aspx?itemid=1853&parent then click the 3rd tab beneath "HC32F460PETB-LQFP100. Download 
-HC32F460_IDE_Rev1.0.7.zip. The pack file is inside, it can be imported in the Keil pack manager.
+	* Go to http://www.xhsc.com.cn/Productlist/info.aspx?itemid=1853&parent
+	* Click the 3rd tab beneath "HC32F460PETB-LQFP100"
+	* Download `HC32F460_IDE_Rev1.0.7.zip`.
+	* The pack file is inside, it can be imported in the Keil pack manager.
 
 Once that environment is set up:
 * Open `workspace/anycubic.uvprojx` in Keil uVision
