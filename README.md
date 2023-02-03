@@ -11,6 +11,8 @@ However, if anyone finds this searching for Kobra firmware modification examples
 * Hotend max temperature increased from 275 to 285 per E3D's Titan Aero Marlin instructions.
     * E3D recommends even updating it to 300 (temporarily only!) for hot tightening the nozzle, but I change nozzles too much and print at too low of temps to deal with that right now.
 * Build volume Z height reduced to accomodate DIY dual Z screw mod.
+* The **factory default** X/Y stepper current has been increased from 600 to 800 mA, which is what my printer shipped with in EEPROM settings. I have been printing with successfuly for a couple months like this, motors have not burned up.
+	* NB: This may be something that Anycubic changed intentionally between 2.7.9 and 2.8.2; it bears investigating. 
 
 # Minor changes
 
@@ -18,8 +20,11 @@ However, if anyone finds this searching for Kobra firmware modification examples
 * EEPROM "factory" defaults were changed to match what I have been using, so I have a clean record of my major settings changes in git history.
 	* E-steps 
 	* X/Y jerk set to 10
-		* NB: Now that I am in the code, I see that the firmware's factory jerk setting on 2.8.2 is set to 5 but mine shipped with it set to 20 in the EEPROM, which is definitely too much. May need to compare vs the older 2.7.9 firmware to see if this was an intentional change from Anycubic, and if so see if 5 works even better.
+		* NB: Now that I am in the code, I see that the firmware's factory jerk setting on 2.8.2 is set to 5 but mine shipped with it set to 20 in the EEPROM, which is definitely too much. May need to compare vs the older 2.7.9 firmware to see if this was an intentional change from Anycubic, and if so, see if 5 works even better.
+	* Default acceleration for print moves set to 4000 (i.e., by default it is capped by max accel values for the various steppers.) This improves the default effective X-axis acceleration from 600 to 700 mm/s^2. 
+		* There was a similar discrepancy between my as-shipped EEPROM and 2.8.2 defaults on the travel default acceleration, but because the values in 2.8.2 were still greater than any of the individual axes' max accels, I did not adjust it.
     * PID coefficients for the hotend heater updated to results of my auto tuning.
+    * Aforementioned X/Y stepper current change.
 
 # Build instructions
 See https://www.reddit.com/r/anycubic/comments/y2waxu/tutorial_how_to_build_anycubic_marlin_source_code/ for detailed build instructions.
@@ -40,23 +45,15 @@ Once that environment is set up:
 # Installing firmware
 * Format your SD card (FAT32) and place the resulting firmware.bin in the root, as the only file on the card.
 * Power off your printer
-* Remove USB serial cable if you are using one, so nothing tries to talk to it while it is updating firmware.
 * Insert SD card
 * Turn on printer
 * The printer will stall while booting on the Anycubic logo. Let it wait for a bit. It will then beep five times and then go into the updated firmware's menu.
 
-# FAQ
+# Troubleshooting
 
 ### When trying to install firmware, it hangs on the Anycubic logo, beeps five times, but never proceeds to the menu, even after 5 or 10 minutes.
 
 When this happened to me, it was because I still had the USB cable connecting it to my Octopi that was probably trying to talk to it over serial and confusing it. After removing the cable and trying the process again, it flashed normally and works fine with no apparent problems.
 
-### Does this blow away my EEPROM settings (E-steps, bed leveling data, etc)?
-
-It did not blow away mine when I upgraded from 2.7.9 to this.
-
 # Special thanks
 Thank you to /u/jojos38 on Reddit who provided the build instructions to allow me to do this modification.
-
-Please see jojos38's own custom Kobra firmware project here:
-https://github.com/jojos38/anycubic-kobra-improved-firmware
