@@ -11,6 +11,8 @@ However, if anyone finds this searching for Kobra firmware modification examples
 * Hotend max temperature increased from 275 to 285 per E3D's Titan Aero Marlin instructions.
     * E3D recommends even updating it to 300 (temporarily only!) for hot tightening the nozzle, but I change nozzles too much and print at too low of temps to deal with that right now.
 * Build volume Z height reduced to accomodate DIY dual Z screw mod.
+* The **factory default** X/Y stepper current has been increased from 600 to 800 mA, which is what my EEPROM settings came with. I have been printing with successfuly for a couple months like this, motors have not burned up.
+	* NB: This may be something that Anycubic changed intentionally between 2.7.9 and 2.8.2; it bears investigating. 
 
 # Minor changes
 
@@ -18,8 +20,11 @@ However, if anyone finds this searching for Kobra firmware modification examples
 * EEPROM "factory" defaults were changed to match what I have been using, so I have a clean record of my major settings changes in git history.
 	* E-steps 
 	* X/Y jerk set to 10
-		* NB: Now that I am in the code, I see that the firmware's factory jerk setting on 2.8.2 is set to 5 but mine shipped with it set to 20 in the EEPROM, which is definitely too much. May need to compare vs the older 2.7.9 firmware to see if this was an intentional change from Anycubic, and if so see if 5 works even better.
+		* NB: Now that I am in the code, I see that the firmware's factory jerk setting on 2.8.2 is set to 5 but mine shipped with it set to 20 in the EEPROM, which is definitely too much. May need to compare vs the older 2.7.9 firmware to see if this was an intentional change from Anycubic, and if so, see if 5 works even better.
+	* Default acceleration for print moves set to 4000 (i.e., by default it is capped by max accel values for the various steppers.) This improves the default effective X-axis acceleration from 600 to 700 mm/s^2. 
+		* There was a similar discrepancy between my as-shipped EEPROM and 2.8.2 defaults on the travel default acceleration, but because the values in 2.8.2 were still greater than any of the individual axes' max accels, I did not adjust it.
     * PID coefficients for the hotend heater updated to results of my auto tuning.
+    * Aforementioned X/Y stepper current change.
 
 # Build instructions
 See https://www.reddit.com/r/anycubic/comments/y2waxu/tutorial_how_to_build_anycubic_marlin_source_code/ for detailed build instructions.
