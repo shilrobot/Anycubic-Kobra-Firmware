@@ -57,5 +57,7 @@ Once that environment is set up:
 
 When this happened to me, it was because I still had the USB cable connecting it to my Octopi that was probably trying to talk to it over serial and confusing it. After removing the cable and trying the process again, it flashed normally and works fine with no apparent problems.
 
+I have also seen the Kobra hang on boot (without playing its normal startup chime) if you just rebooted it after encountering an issue with one of the steppers (e.g. stall, bad wiring, etc.) In this case the problem seems to clear after another reboot.
+
 # Special thanks
 Thank you to /u/jojos38 on Reddit who provided the build instructions to allow me to do this modification.
