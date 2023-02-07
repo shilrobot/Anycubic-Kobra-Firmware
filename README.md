@@ -47,11 +47,16 @@ Once that environment is set up:
 # Installing firmware
 * Format your SD card (FAT32) and place the resulting firmware.bin in the root, as the only file on the card.
 * Power off your printer
+* Remove USB serial cable if you are using one, so nothing tries to talk to it while it is updating firmware.
 * Insert SD card
 * Turn on printer
 * The printer will stall while booting on the Anycubic logo. Let it wait for a bit. It will then beep five times and then go into the updated firmware's menu.
 
-# Troubleshooting
+# FAQ/Troubleshooting
+
+### Does this blow away my EEPROM settings (E-steps, bed leveling data, etc)?
+
+It did not blow away mine when I upgraded from 2.7.9 to this.
 
 ### When trying to install firmware, it hangs on the Anycubic logo, beeps five times, but never proceeds to the menu, even after 5 or 10 minutes.
 
@@ -61,3 +66,6 @@ I have also seen the Kobra hang on boot (without playing its normal startup chim
 
 # Special thanks
 Thank you to /u/jojos38 on Reddit who provided the build instructions to allow me to do this modification.
+
+Please see jojos38's own custom Kobra firmware project here:
+https://github.com/jojos38/anycubic-kobra-improved-firmware
