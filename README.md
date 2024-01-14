@@ -25,6 +25,9 @@ However, if anyone finds this searching for Kobra firmware modification examples
 		* There was a similar discrepancy between my as-shipped EEPROM and 2.8.2 defaults on the travel default acceleration, but because the values in 2.8.2 were still greater than any of the individual axes' max accels, I did not adjust it.
     * PID coefficients for the hotend heater updated to results of my auto tuning.
     * Aforementioned X/Y stepper current change.
+* G27 behavior changed
+	* Nozzle moves to left and bed is kicked forward
+	* Z is raised to a minimum of 50mm (instead of 2mm) for hand clearance
 
 # Build instructions
 See https://www.reddit.com/r/anycubic/comments/y2waxu/tutorial_how_to_build_anycubic_marlin_source_code/ for detailed build instructions.
